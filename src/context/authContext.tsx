@@ -4,9 +4,17 @@ import { Auth } from "../constants/auth";
 
 const AuthContext = createContext<{
     auth?: UserAuth | null;
-    login?: (userData: UserAuth) => void;
-    logout?: () => void;
-}>({});
+    login: (userData: UserAuth) => void;
+    logout: () => void;
+}>({
+    logout: function (): void {
+        throw new Error("Function not implemented.");
+    },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    login: function (_userData: UserAuth): void {
+        throw new Error("Function not implemented.");
+    }
+});
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);

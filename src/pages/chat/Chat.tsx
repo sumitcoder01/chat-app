@@ -7,7 +7,7 @@ export default function Chat() {
   return (
     <Container>
       <Helmet>
-        <title>Chat App - {`chat - ${id}`}</title>
+        <title>Chat App - chat</title>
       </Helmet>
       <Typography variant="h1" color="initial">chats {id}</Typography>
     </Container>
