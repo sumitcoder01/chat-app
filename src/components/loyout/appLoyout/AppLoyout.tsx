@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import { Fragment, Suspense, lazy, useState } from "react";
 import { Navbar } from "../../specific/header/Navbar";
 import { Outlet } from "react-router-dom";
 import { Backdrop } from "@mui/material";
@@ -19,12 +19,12 @@ export default function AppLoyout() {
   const toggalGroups = () => setIsGroups(prev => !prev);
 
   return (
-    <>
+    <Fragment>
       <Navbar toggalSearch={toggalSearch} toggalNotifications={toggalNotifications} toggalGroups={toggalGroups} />
       <Outlet />
-      {isSearch && <Suspense fallback={<Backdrop open />}><DialogModal title={"Find Users"} open={isSearch && !isNotifications && !isGroups} handleClose={toggalSearch} ><SearchUser /></DialogModal></Suspense>}
-      {isNotifications && <Suspense fallback={<Backdrop open />}><DialogModal title={"Notification"} open={isNotifications && !isSearch && !isGroups} handleClose={toggalNotifications} ><Notifications /></DialogModal></Suspense>}
-      {isGroups && <Suspense fallback={<Backdrop open />}><DialogModal title={"Create Groups"} open={isGroups && !isSearch && !isNotifications} handleClose={toggalGroups} ><CreateGroups /></DialogModal></Suspense>}
-    </>
+      {isSearch && <Suspense fallback={<Backdrop open />}><DialogModal title={"Find Users"} open={isSearch} handleClose={toggalSearch} ><SearchUser /></DialogModal></Suspense>}
+      {isNotifications && <Suspense fallback={<Backdrop open />}><DialogModal title={"Notification"} open={isNotifications} handleClose={toggalNotifications} ><Notifications /></DialogModal></Suspense>}
+      {isGroups && <Suspense fallback={<Backdrop open />}><DialogModal title={"Create Groups"} open={isGroups} handleClose={toggalGroups} ><CreateGroups /></DialogModal></Suspense>}
+    </Fragment>
   )
 }

@@ -17,16 +17,15 @@ export function Navbar({ toggalSearch, toggalGroups, toggalNotifications }: Navb
   const { logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
   const theme = useTheme();
   const notification = 100;
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: BlueColor }} >
+    <AppBar position="sticky" sx={{ backgroundColor: BlueColor, height: "4rem" }} >
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize: { xs: '0.9rem', sm: '1.3rem' } }}
           onClick={() => navigate("/")}
         >
           Chat App
